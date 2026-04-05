@@ -6,16 +6,22 @@ const NavBar = () => {
 
         <li>
             <NavLink
-                className={({ isActive }) => isActive ? "text-green-600 px-3 py-2 border-1 border-green-600" : ""}
+                className={({ isActive }) => `mx-2 font-semibold ${isActive ? "text-green-600 px-3 py-2 border-1 border-green-600" : ""}`}
                 to="/" >Home</NavLink>
         </li>
 
         <li>
-            <NavLink to="/books" className={({ isActive }) => isActive ? "text-green-600 px-3 py-2 border-1 border-green-600" : ""}>Listed Books</NavLink>
+            <NavLink
+                className={({ isActive }) => `mx-2 font-semibold ${isActive ? "text-green-600 px-3 py-2 border-1 border-green-600" : ""}`}
+                to="/Books" >Listed Books</NavLink>
         </li>
 
-        <li><NavLink to="/page-to-read" className={({ isActive }) => isActive ? "text-green-600 px-3 py-2 border-1 border-green-600" : ""}>Pages To Read</NavLink></li>
-        
+        <li>
+            <NavLink
+                className={({ isActive }) => `mx-2 font-semibold ${isActive ? "text-green-600 px-3 py-2 border-1 border-green-600" : ""}`}
+                to="/page-to-read" >Pages To Read</NavLink>
+        </li>
+
     </>
     return (
 
@@ -27,7 +33,7 @@ const NavBar = () => {
                     </div>
                     <ul
                         tabIndex="-1"
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm  gap-4 dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {links}
                     </ul>
                 </div>
@@ -38,8 +44,9 @@ const NavBar = () => {
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
+            <div className="navbar-end gap-4">
+                <button className="btn btn-success">Sign In</button>
+                <button className="btn btn-primary">Sign Up</button>
             </div>
         </div>
 
