@@ -11,7 +11,7 @@ const Banner = () => {
                         className="max-w-sm rounded-lg shadow-2xl"
                     />
                     <div>
-                        <h1 className="text-5xl font-bold">Books to freshen up <br /> your bookshelf</h1>
+                        <h1 className="text-7xl font-bold">Books to freshen up <br /> your bookshelf</h1>
                         <button className="btn btn-primary bg-green-600 text-white mt-10 border-2 border-green-600 hover:bg-white hover:text-green-600">View The List</button>
                     </div>
                 </div>
