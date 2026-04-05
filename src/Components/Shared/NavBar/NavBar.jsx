@@ -1,12 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const NavBar = () => {
     const links = <>
 
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/books">Listed Books</Link></li>
-        <li><Link to="/page-to-read">Pages To Read</Link></li>
+        <li>
+            <NavLink
+                className={({ isActive }) => isActive ? "text-green-600 px-3 py-2 border-1 border-green-600" : ""}
+                to="/" >Home</NavLink>
+        </li>
+
+        <li>
+            <NavLink to="/books" className={({ isActive }) => isActive ? "text-green-600 px-3 py-2 border-1 border-green-600" : ""}>Listed Books</NavLink>
+        </li>
+
+        <li><NavLink to="/page-to-read" className={({ isActive }) => isActive ? "text-green-600 px-3 py-2 border-1 border-green-600" : ""}>Pages To Read</NavLink></li>
+        
     </>
     return (
 
@@ -19,32 +28,14 @@ const NavBar = () => {
                     <ul
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li><a>Item 1</a></li>
-                        <li>
-                            <a>Parent</a>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Item 3</a></li>
+                        {links}
                     </ul>
                 </div>
                 <h2 className=" font-bold text-3xl">Book Vibe</h2>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Item 1</a></li>
-                    <li>
-                        <details>
-                            <summary>Parent</summary>
-                            <ul className="p-2 bg-base-100 w-40 z-1">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    <li><a>Item 3</a></li>
+                    {links}
                 </ul>
             </div>
             <div className="navbar-end">
