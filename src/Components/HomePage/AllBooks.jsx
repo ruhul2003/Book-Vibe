@@ -1,48 +1,31 @@
-import React from 'react';
-import { use } from 'react';
-
+import React, { Suspense, use } from 'react';
+import BookCard from '../UI/BookCard';
 
 const BookPromise = fetch('/booksData.json').then(res => res.json());
 
-
-
 const AllBooks = () => {
-
-
-    const Books = use(BookPromise);
+    const Books = use(BookPromise); // React 18+ with Suspense
     console.log(Books);
 
-
     return (
-        <div>
-            <h1 className='text-center font-bold text-3xl'>Books</h1>
+        <div className="w-10/12 mx-auto my-10">
+            {/* Page Title */}
+            <h1 className='text-center font-bold text-4xl md:text-5xl mb-16'>Books</h1>
 
-            {Books.map(
-                (book) => {
-                    return (
-                        <div className="card bg-base-100 w-96 shadow-sm">
-                            <figure>
-                                <img
-                                    src={book.image}
-                                    alt="book1" />
-                            </figure>
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    {book.BookName}
-                                    <div className="badge badge-secondary">NEW</div>
-                                </h2>
-                                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                                <div className="card-actions justify-end">
-                                    <div className="badge badge-outline">{}</div>
-                                    <div className="badge badge-outline">Products</div>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                }
-            )}
+            {/* Grid Container */}
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
+                {Books.map((book, index) => (
+                    <BookCard key={index} book={book} />
+                ))}
+            </div>
         </div>
     );
 };
 
-export default AllBooks;
+export default function SuspenseWrapper() {
+    return (
+        <Suspense fallback={<div className='text-center mt-10 text-lg'>Loading books...</div>}>
+            <AllBooks />
+        </Suspense>
+    );
+}
