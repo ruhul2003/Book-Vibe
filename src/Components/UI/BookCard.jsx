@@ -19,7 +19,7 @@ const BookCard = ({ book }) => {
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1 mb-2">
                     {book.tags.map((tag) => (
-                        <div key={tag} className="badge text-green-700 bg-green-100 font-semibold text-xs">
+                         <div key={tag} className="badge text-green-700 bg-green-100 font-semibold text-xs">
                             {tag}
                         </div>
                     ))}
