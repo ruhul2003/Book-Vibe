@@ -1,6 +1,20 @@
 import { useParams } from 'react-router';
 import { useLoaderData } from 'react-router';
 
+
+const [storedBooks , setStoredBooks] = useState([]);
+
+const handleMarkAsRead = (bookId) => {
+    console.log('Mark as read', bookId);
+    const isExistBook = storedBooks.find(book=> book.bookId === bookId);
+    if(isExistBook){
+        alert('Already marked as read');
+        return;
+    }    
+    const newStoredBooks = [...storedBooks, bookId];
+    setStoredBooks(newStoredBooks); 
+}   
+
 const BookDetails = () => {
 
     // get bookId from URL
@@ -31,8 +45,7 @@ const BookDetails = () => {
                     <img
                         src={expectedBook.image}
                         alt={expectedBook.bookName}
-                        className="w-full h-[300px] md:h-[400px] object-cover rounded-lg"
-                    />
+                        className="w-full h-[300px] md:h-[400px] object-cover rounded-lg"/>
                 
 
 
@@ -78,7 +91,7 @@ const BookDetails = () => {
 
                     {/* Buttons */}
                     <div className="card-actions flex flex-row gap-5 mt-8">
-                        <button className="btn btn-primary">Listen</button>
+                        <button onClick={()=> handleMarkAsRead(bookId)} className="btn btn-primary">Mark As Read</button>
                         <button className="btn btn-accent">Wishlist</button>
                     </div>
 
